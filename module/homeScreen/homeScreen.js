@@ -12,8 +12,15 @@ export default class HomeScreen extends React.Component {
                     <Button
                         primary
                         raised
-                        text = 'My Location'
-                        onPress={()=> this.props.navigation.navigate('Details')}
+                        text = 'Google Map'
+                        onPress={()=> this.props.navigation.navigate('GoogleMaps')}
+                    />
+                    
+                     <Button
+                        primary
+                        raised
+                        text = 'Chat Me Up'
+                        onPress={()=> this.props.navigation.navigate('ChatApp')}
                     />
                 </View>
            // </ThemeProvider>
