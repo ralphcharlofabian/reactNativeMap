@@ -31,17 +31,24 @@ export default class GoogleMaps extends React.Component {
                 }
             },
             {
-            title: 'hospital 2',
+            title: 'Trans Global Health System Inc.',
             coordinates:{
-                latitude: 14.5503,
-                longitude: 121.0220,
+                latitude: 14.565555,
+                longitude: 121.008658,
                 }
             },
             {
             title: 'hospital 3',
             coordinates:{
-                latitude: 14.5601,
+                latitude: 14.5547,
                 longitude: 121.0244,
+                }
+            },
+            {
+            title: 'Makati Medical Center',
+            coordinates:{
+                latitude: 14.5593,
+                longitude: 121.0145,
                 }
             }
         ],
