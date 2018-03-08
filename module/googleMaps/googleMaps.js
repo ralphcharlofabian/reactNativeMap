@@ -5,8 +5,6 @@ import { ThemeProvider, Button } from 'react-native-material-ui';
 import MapView from 'react-native-maps';
 
 
-
-
 export default class GoogleMaps extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +20,32 @@ export default class GoogleMaps extends React.Component {
         longitude: 121.0244,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
-      }
+      },
+      sampleHospitals:
+      [
+            {
+            title: 'hospital 1',
+            coordinates:{
+                latitude: 14.5650,
+                longitude: 121.0235,
+                }
+            },
+            {
+            title: 'hospital 2',
+            coordinates:{
+                latitude: 14.5503,
+                longitude: 121.0220,
+                }
+            },
+            {
+            title: 'hospital 3',
+            coordinates:{
+                latitude: 14.5601,
+                longitude: 121.0244,
+                }
+            }
+        ],
+        findHospital: false
     }
   }
 
@@ -44,7 +67,10 @@ export default class GoogleMaps extends React.Component {
     (error) => console.log(error,'eeerrrrroooooorr'),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
   }
+  onFindHospitals(){
 
+      this.setState({findHospital: true})
+  }
 
   render() {
     return (
@@ -52,19 +78,36 @@ export default class GoogleMaps extends React.Component {
             <MapView style = {styles.map} 
               region={this.state.region}
             >
-            <MapView.Marker 
+            {/* <MapView.Marker 
                 coordinate={{
                 latitude: 14.5495,
                 longitude: 121.0269,
                 }}
                 title='sample marker'
-              />
-               <MapView.Marker 
-                coordinate={this.state.marker}
-                title='youre here'
+                pinColor='turquoise'
+            /> */}
+                {this.state.findHospital?
+                this.state.sampleHospitals.map((marker,i) => (
+                    <MapView.Marker 
+                      key ={i}
+                      coordinate={marker.coordinates}
+                      title={marker.title}
+                      pinColor='turquoise'
+                    />
+                  ))
+                : null }
+                <MapView.Marker 
+                 coordinate={this.state.marker}
+                 title='youre here'
+                
               />
             </MapView>
-            
+            <Button
+            onPress = {this.onFindHospitals.bind(this)}
+            primary
+            raised
+            text = 'Find Nearest Hospitals'
+            > </Button>
         </View>
     );
   }
