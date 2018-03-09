@@ -31,7 +31,6 @@ export default class ChatHome extends React.Component {
                         text = 'Enter Name'
                         onPress={()=> this.props.navigation.navigate('Conversation', {userName : this.state.userName})}
                     />
-                    {/* tobeFix passing parameters */}
             </View>
         );
     }
