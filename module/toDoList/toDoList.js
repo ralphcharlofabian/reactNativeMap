@@ -23,7 +23,8 @@ export default class Main extends Component {
         let notes = this.state.noteArray.map((val, key)=>{
             return <Note key={key} keyval={key} val={val}
                     deleteMethod={()=>this.deleteNote(key)}
-                    editMethod={()=> this.editNote(key)}/>
+                    editMethod={()=> this.editNote(key)}
+                    hasText ={this.state.noteText}/>
         });
         return (
             <View style={styles.container}>
