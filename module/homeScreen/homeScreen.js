@@ -8,7 +8,7 @@ export default class HomeScreen extends React.Component {
         return(
             //<ThemeProvider>
                 <View  style={styles.container}>
-                    <View style={styles.header}>
+                    <View style={styles.header} >
                         <Text style={styles.headerText}>Hi Welcome to my App</Text>
                     </View>
                     <View style={styles.note}>
