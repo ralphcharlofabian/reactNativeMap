@@ -7,7 +7,7 @@ import HomeScreen from './module/homeScreen/homeScreen';
 import GoogleMaps from './module/googleMaps/googleMaps';
 import ChatApp from './module/chatMessages/chatHome';
 import Conversation from './module/chatMessages/conversation';
-
+import ToDoList from './module/toDoList/toDoList';
 const RootStack = StackNavigator(
     {
         HomeScreen: {
@@ -21,6 +21,9 @@ const RootStack = StackNavigator(
         },
         Conversation:{
             screen : Conversation
+        },
+        ToDoList :{
+            screen : ToDoList,
         }
     },
     {

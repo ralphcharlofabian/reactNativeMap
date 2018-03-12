@@ -22,6 +22,12 @@ export default class HomeScreen extends React.Component {
                         text = 'Chat Me Up'
                         onPress={()=> this.props.navigation.navigate('ChatApp')}
                     />
+                    <Button
+                        primary
+                        raised
+                        text = 'To Do List'
+                        onPress={()=> this.props.navigation.navigate('ToDoList')}
+                    />
                 </View>
            // </ThemeProvider>
         )
