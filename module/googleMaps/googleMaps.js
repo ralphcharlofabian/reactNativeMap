@@ -24,35 +24,94 @@ export default class GoogleMaps extends React.Component {
       sampleHospitals:
       [
             {
-            title: 'hospital 1',
+            title: 'Khoo Teck Puat Hospital',
             coordinates:{
-                latitude: 14.5650,
-                longitude: 121.0235,
+                latitude: 1.424635,
+                longitude: 103.838208,
                 }
             },
             {
-            title: 'Trans Global Health System Inc.',
+            title: 'Bright Vision Hospital',
             coordinates:{
-                latitude: 14.565555,
-                longitude: 121.008658,
+                latitude: 1.3721,
+                longitude: 103.8781,
                 }
             },
             {
-            title: 'hospital 3',
+            title: 'Mount Alvernia Hospital',
             coordinates:{
-                latitude: 14.5547,
-                longitude: 121.0244,
+                latitude: 1.3419,
+                longitude: 103.8379,
                 }
             },
             {
-            title: 'Makati Medical Center',
+            title: 'Parkway East Hospital',
             coordinates:{
-                latitude: 14.5593,
-                longitude: 121.0145,
+                latitude: 1.3151,
+                longitude: 103.9090,
                 }
             }
         ],
-        findHospital: false
+        findHospital: false,
+        sampleTouristSpots:[
+          {
+            title: 'Clarke Quay',
+            coordinates:{
+                latitude: 1.2906,
+                longitude: 103.8465,
+                }
+            },
+            {
+            title: 'ArtScience Museum',
+            coordinates:{
+                latitude: 1.2863,
+                longitude: 103.8593,
+                }
+            },
+            {
+            title: 'Singapore Zoo',
+            coordinates:{
+                latitude: 1.4043,
+                longitude: 103.7930,
+                }
+            },
+            {
+            title: 'SuperTree Grove',
+            coordinates:{
+                latitude: 1.2820,
+                longitude: 103.8639,
+                }
+            },
+            {
+              title: 'Marina Baragge',
+              coordinates:{
+                  latitude: 1.2805,
+                  longitude: 103.8712,
+                  }
+              },
+              {
+              title: 'Gardens by the Bay',
+              coordinates:{
+                  latitude: 1.2816,
+                  longitude: 103.8636,
+                  }
+              },
+              {
+              title: 'Merlion Park',
+              coordinates:{
+                  latitude: 1.2868,
+                  longitude: 103.8545,
+                  }
+              },
+              {
+              title: 'Marina Bay Sands',
+              coordinates:{
+                  latitude: 1.2834,
+                  longitude: 103.8607,
+                  }
+              }
+        ],
+        findTouristSpots: false
     }
   }
 
@@ -78,21 +137,16 @@ export default class GoogleMaps extends React.Component {
 
       this.setState({findHospital: true})
   }
+  onFindTouristSpots(){
 
+    this.setState({findTouristSpots: true})
+}
   render() {
     return (
         <View style = {styles.container}>
             <MapView style = {styles.map} 
               region={this.state.region}
             >
-            {/* <MapView.Marker 
-                coordinate={{
-                latitude: 14.5495,
-                longitude: 121.0269,
-                }}
-                title='sample marker'
-                pinColor='turquoise'
-            /> */}
                 {this.state.findHospital?
                 this.state.sampleHospitals.map((marker,i) => (
                     <MapView.Marker 
@@ -100,6 +154,17 @@ export default class GoogleMaps extends React.Component {
                       coordinate={marker.coordinates}
                       title={marker.title}
                       pinColor='turquoise'
+                    />
+                  ))
+                : null }
+             
+                {this.state.findTouristSpots?
+                this.state.sampleTouristSpots.map((marker,i) => (
+                    <MapView.Marker 
+                      key ={i}
+                      coordinate={marker.coordinates}
+                      title={marker.title}
+                      pinColor='yellow'
                     />
                   ))
                 : null }
@@ -113,7 +178,13 @@ export default class GoogleMaps extends React.Component {
             onPress = {this.onFindHospitals.bind(this)}
             primary
             raised
-            text = 'Find Nearest Hospitals'
+            text = 'Find Some Hospitals'
+            style={{marginBottom:10}}> </Button>
+             <Button
+            onPress = {this.onFindTouristSpots.bind(this)}
+            primary
+            raised
+            text = 'Find Some Tourist Spots'
             > </Button>
         </View>
     );
